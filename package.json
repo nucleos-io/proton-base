@@ -1,0 +1,34 @@
+{
+  "name": "hustling-fs",
+  "version": "0.0.0",
+  "description": "This is a manager for files in hustling app",
+  "scripts": {
+    "test": "mocha -R spec --compilers js:babel-core/register ./test/**/*.js",
+    "start": "node ./server.js"
+  },
+  "author": "Luis Hernandez",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.0.0",
+    "co-supertest": "^0.0.10",
+    "aws-sdk": "^2.0.0",
+    "winston": "^2.0.0",
+    "proton-koa": "^1.0.7",
+    "koa-router": "^5.0.0",
+    "proton-model": "^1.2.3",
+    "proton-exception": "^1.0.1",
+    "proton-controller": "^1.0.3",
+    "proton-service": "^1.0.1",
+    "mongo-uri-builder": "^1.0.0",
+    "proton-quark-mongoose": "^1.0.0",
+    "proton-quark-multer": "^1.1.5",
+    "koa-multer": "^0.0.2",
+    "babel-core": "^6.0.0",
+    "babel-preset-node5": "^10.0.0",
+    "babel-polyfill": "^6.0.1",
+    "babel-plugin-syntax-async-generators": "^6.0.0",
+    "babel-preset-es2015-node5": "^1.0.0",
+    "babel-plugin-syntax-async-functions": "^6.0.0",
+    "babel-plugin-add-module-exports": "^0.1.2"
+  }
+}
