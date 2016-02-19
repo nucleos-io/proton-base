@@ -1,6 +1,6 @@
 'use strict'
 
-import Model from 'proton-model'
+import Model from 'proton-mongoose-model'
 
 export default class Info extends Model {
 
