@@ -4,12 +4,12 @@ let Router = require('koa-router')
 
 // Variables and constants
 var router = new Router({
-  prefix: '/info'
+  prefix: '/avengers'
 })
 
 // Functions, Logic, etc...
 
-router.get('/', InfoController.info)
+router.post('/', AvengerController.create)
 
 
 module.exports = router
