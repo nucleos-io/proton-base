@@ -20,4 +20,8 @@ export default class Avenger extends Model {
     return avenger.save()
   }
 
+  handlerError() {
+    
+  }
+
 }

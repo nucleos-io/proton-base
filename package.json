@@ -1,7 +1,7 @@
 {
-  "name": "hustling-fs",
+  "name": "Avengers example app",
   "version": "1.0.0",
-  "description": "The avengers example app",
+  "description": "The avengers example app :D",
   "scripts": {
     "test": "mocha -R spec --compilers js:babel-core/register ./test/**/*.js",
     "start": "node ./server.js"

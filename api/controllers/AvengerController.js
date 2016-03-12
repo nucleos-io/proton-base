@@ -24,4 +24,5 @@ export default class AvengerController extends Controller {
    */
   * find() {}
 
+
 }
