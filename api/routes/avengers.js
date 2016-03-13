@@ -1,15 +1,12 @@
 'use strict'
+import Router from 'koa-router'
 
-let Router = require('koa-router')
-
-// Variables and constants
-var router = new Router({
+const router = new Router({
   prefix: '/avengers'
 })
 
-// Functions, Logic, etc...
-
-router.post('/', AvengerController.create)
-
+router.get('/', AvengerController.find)
+router.post('/', AuthPolicies.client, AvengerController.create)
+router.put('/me', AuthPolicies.bearer, AvengerController.updateMe)
 
 module.exports = router

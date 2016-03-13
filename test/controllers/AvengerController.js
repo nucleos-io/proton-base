@@ -1,20 +1,47 @@
 import supertest from 'co-supertest'
 import app from '../../server.js'
 
-// Declarative section
 const request = supertest(app)
 
+describe('AvengerController', () => {
 
-describe("Create an amazing avenger :D", () => {
-  it("Should return 201 because an avenger has been created", function*() {
-    let result = yield request
-      .post('/avengers')
-      .send({
-        name: 'Steven Grant Rogers',
-        alias: 'American Captain',
-        height: 1.89,
-        weight: 109,
-      })
-      .expect(201)
+  it('Find all avengers', function*() {
+    const response = yield request
+      .get('/avengers')
+      .expect(200)
+    proton.log.debug('GET /avengers', response.body)
   })
+
+  it('Create an amazing avenger :D', function*() {
+    const clientId = '123456'
+    const clientSecret = '123456'
+    const avenger = {
+      name: 'Steven Grant Rogers',
+      alias: 'American Captain',
+      height: 1.89,
+      weight: 109
+    }
+    const response = yield request
+      .post('/avengers')
+      .set('client_id', clientId)
+      .set('client_secret', clientSecret)
+      .send(avenger)
+      .expect(201)
+      proton.log.debug('POST /avengers', response.body)
+  })
+
+  it('Update avenger', function*() {
+    const accessToken = '1111111111111111111111111'
+    const avenger = {
+      name: 'Steven Grant Rogers',
+      alias: 'Capitan America'
+    }
+    const response = yield request
+      .put('/avengers/me')
+      .set('Authorization', 'Bearer ' + accessToken)
+      .send(avenger)
+      .expect(200)
+      proton.log.debug('POST /avengers', response.body)
+  })
+
 })
