@@ -29,7 +29,7 @@
     "proton-koa": "^1.1.5",
     "proton-mongoose-model": "^1.0.6",
     "proton-policy": "1.0.5",
-    "proton-quark-mongoose": "^1.1.0",
+    "proton-quark-mongoose": "^1.1.2",
     "proton-quark-multer": "^1.1.5",
     "proton-quark-passport": "^1.0.1",
     "proton-service": "^1.0.5",

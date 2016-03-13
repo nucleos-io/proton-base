@@ -13,8 +13,6 @@ describe('AvengerController', () => {
   })
 
   it('Create an amazing avenger :D', function*() {
-    const clientId = '123456'
-    const clientSecret = '123456'
     const avenger = {
       name: 'Steven Grant Rogers',
       alias: 'American Captain',
@@ -23,8 +21,6 @@ describe('AvengerController', () => {
     }
     const response = yield request
       .post('/avengers')
-      .set('client_id', clientId)
-      .set('client_secret', clientSecret)
       .send(avenger)
       .expect(201)
       proton.log.debug('POST /avengers', response.body)

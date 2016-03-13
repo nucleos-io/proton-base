@@ -15,7 +15,7 @@ export default class Avenger extends Model {
     }
   }
 
-  create(opts) {
+  static create(opts) {
     const avenger = new this(opts)
     return avenger.save()
   }
