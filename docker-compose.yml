@@ -1,14 +1,17 @@
 app:
-  build: .
+  image: nucleos/proton
+  cpu_shares: 100
+  mem_limit: 524288000
   volumes:
     - "./api:/app/api"
     - "./test:/app/test"
     - "./.tmp:/app/.tmp"
     - "./config:/app/config"
-
   ports:
     - "8443:8443"
   links:
     - db
 db:
   image: mongo:latest
+  cpu_shares: 100
+  mem_limit: 524288000
