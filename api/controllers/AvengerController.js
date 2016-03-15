@@ -14,6 +14,7 @@ export default class AvengerController extends Controller {
    * @description
    */
   * create() {
+    console.log('REQ AAAAAA', this.request.body)
     try {
       const avenger = yield Avenger.create(this.request.body)
       this.status = 201
