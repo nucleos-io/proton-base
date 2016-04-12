@@ -10,50 +10,47 @@ export default class AvengerController extends Controller {
   }
 
   /**
-   * @method create
-   * @description
-   */
-  * create() {
-    console.log('REQ AAAAAA', this.request.body)
-    try {
-      const avenger = yield Avenger.create(this.request.body)
-      this.status = 201
-      this.body = avenger
-    } catch (err) {
-      proton.log.error('AvengerController.create', err)
-      this.status = 400
-    }
-
-  }
-
-  /**
    * @method find
-   * @description
+   * @description list all avengers
    */
   * find() {
     try {
-      this.status = 200
-      this.body = yield Avenger.find()
+      const avengers = yield Avenger.find()
+      this.response.body = avengers
     } catch (err) {
       proton.log.error('AvengerController.find', err)
-      this.status = 400
+      this.response.status = 400
     }
   }
 
   /**
-   * @method update
+   * @method create
+   * @description create a new avenger
+   */
+  * create() {
+    try {
+      const avenger = yield Avenger.create(this.request.body)
+      this.response.body = avenger
+      this.response.status = 201
+    } catch (err) {
+      proton.log.error('AvengerController.create', err)
+      this.response.status = 400
+    }
+  }
+
+  /**
+   * @method destroy
    * @description
    */
-  * updateMe() {
+  * destroy() {
     try {
-      const me = this.request.body.me
-      const avenger = _.omit(this.request.body, 'me')
-      this.status = 200
-      proton.log.debug('User to update', me)
-      // this.body = yield Avenger.update(me._id, avenger)
+      const {id} = this.params
+      const avenger = yield Avenger.findOneAndRemove({_id: id})
+      this.response.body = avenger
+      this.response.status = !avenger ? 404 : 200
     } catch (err) {
       proton.log.error('AvengerController.find', err)
-      this.status = 400
+      this.response.status = 400
     }
   }
 

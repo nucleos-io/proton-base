@@ -11,40 +11,22 @@ export default class  AuthPolicies extends Policy {
   /**
    * @description
    */
-  * bearer(next) {
-    const self = this
-    const opts = { session: false }
-    const cb = function*(err, user, token) {
-      if (err) return self.status = 401
-      // Add the user to body request
-      proton.log.debug('Make request from these user: ', user)
-      self.request.body.me = user
-      yield next
-    }
-    try {
-      yield passport.authenticate('bearer', opts, cb).call(this)
-    } catch (err) {
-      proton.log.error(err)
-    }
-  }
-
-  /**
-   * @description
-   */
   * client(next) {
     const self = this
     const opts = { session: false }
     const cb = function*(err, client) {
-      if (err) return self.status = 401
-      // Add the client to body request
-      proton.log.debug('Make request from these client: ', err, client)
-      self.request.body.client = client
+      if (err || !client) return self.response.status = 401
+      // Add the client to request
+      self.request.client = client
+      delete self.request.body.client_id
+      delete self.request.body.client_secret
       yield next
     }
     try {
       yield passport.authenticate('oauth2-client-password', opts, cb).call(this)
     } catch (err) {
-      proton.log.error(err)
+      proton.log.error('AuthPolicies:client', err)
+      next(err)
     }
   }
 }

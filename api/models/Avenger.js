@@ -15,9 +15,14 @@ export default class Avenger extends Model {
     }
   }
 
-  static create(opts) {
-    const avenger = new this(opts)
-    return avenger.save()
+  static create(avenger) {
+    proton.log.debug('new avenger', avenger)
+    const newAvenger = new this(avenger)
+    return newAvenger.save()
+  }
+
+  static updateOne(_id, value) {
+
   }
 
 }

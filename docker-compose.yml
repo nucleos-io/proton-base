@@ -1,7 +1,5 @@
 app:
-  image: nucleos/proton
-  cpu_shares: 5
-  mem_limit: 224288000
+  build: .
   volumes:
     - "./api:/app/api"
     - "./test:/app/test"
@@ -13,5 +11,3 @@ app:
     - db
 db:
   image: mongo:latest
-  cpu_shares: 5
-  mem_limit: 224288000

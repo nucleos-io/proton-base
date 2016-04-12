@@ -7,12 +7,10 @@ export default class ClientStrategy extends Strategy {
  }
 
  static strategy(clientId, clientSecret, done) {
-   const client = {
-     clientId,
-     clientSecret,
-     name: 'Android'
-   }
-   done(null, client)
+   const criteria = {clientId, clientSecret}
+   Client.findOne(criteria)
+    .then(client => done(null, client))
+    .catch(err => done(err))
  }
 
 }
